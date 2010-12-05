@@ -1,0 +1,7 @@
+xterm*foreground: white
+xterm*background: black
+URxvt*foreground: white
+URxvt*background: black
+URxvt*urlLauncher: google-chrome
+
+URxvt*font: xft:Terminus:pixelsize=14
