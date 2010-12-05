@@ -2,6 +2,6 @@ xterm*foreground: white
 xterm*background: black
 URxvt*foreground: white
 URxvt*background: black
-URxvt*urlLauncher: google-chrome
+URxvt*urlLauncher: uzbl-tabbed
 
 URxvt*font: xft:Terminus:pixelsize=14
