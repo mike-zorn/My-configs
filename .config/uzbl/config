@@ -252,7 +252,8 @@ set ebind     = @mode_bind global,-insert
 # Hard-bound bookmarks
 @cbind  gre  = uri http://www.reddit.com
 @cbind  gma  = uri http://www.gmail.com
-@cbind  ape  = uri http://apenix/apeplayer/music/player
+@cbind  ape  = uri http://apenix.homeunix.com/apeplayer/music/player
+@cbind  cups  = uri http://127.0.0.1:631
 
 # Yanking & pasting binds
 @cbind  yu  = sh 'echo -n $6 | xclip'
@@ -265,7 +266,7 @@ set ebind     = @mode_bind global,-insert
 # Start a new uzbl instance from the page in primary selection
 @cbind  'p  = sh 'exec uzbl-browser --uri $(xclip -o)'
 # paste primary selection into keycmd at the cursor position
-@bind <Shift-Insert> = sh 'echo "event INJECT_KEYCMD `xclip -o | sed s/\\\@/%40/g`" > $4'
+@bind <Ctrl>p = sh 'echo "event INJECT_KEYCMD `xclip -o | sed s/\\\@/%40/g`" > $4'
 
 # Bookmark inserting binds
 @cbind <Ctrl>b<tags:>_  = sh 'echo -e "$6 %s" >> $XDG_DATA_HOME/uzbl/bookmarks'
