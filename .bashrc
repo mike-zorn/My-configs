@@ -17,6 +17,7 @@ alias l='ls -CF'
 alias cdrsh='cd ~/Documents/research/Masters'
 alias newterm='urxvt &>/dev/null &'
 alias shutitdown='sudo shutdown -hP now'
+alias mounthabakuk='sshfs habakuk.gmu.edu:/Users/matkins ~/habakuk'
 
 # Setup Prompt
 
@@ -29,9 +30,20 @@ PS1="${PURPLE}\h ${GREEN}[\T] ${CYAN}\W ${BLUE}\$ ${NONE}"
 
 # Environment Variables
 
-export PYTHONPATH=~/fipy:~/Documents/research/Masters/python:$PYTHONPATH
+export PYTHONPATH=~/aise:~/Documents/research/Masters/python:$PYTHONPATH
+export PYTHONPATH=/usr/local/lib/paraview-3.8/site-packages/:$PYTHONPATH
+export PYTHONPATH=/opt/visit/current/linux-x86_64/lib:$PYTHONPATH
 export FIPY_VIEWER='matplotlib'
 export SVN_EDITOR=vim
 export EDITOR=vim
-export PATH=~/android-sdk/tools:$PATH
+export PATH=~/aise:/usr/local/bin:~/android-sdk/tools:$PATH
+export PATH=/opt/visit/bin:$PATH
 export AUTO_DIR=/usr/local/auto
+export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
+export PS3DEV=/usr/local/ps3dev
+export PSL1GHT=$PS3DEV/psl1ght
+export PATH=$PATH:$PSL1GHT/host/bin
+export PATH=$PATH:$PS3DEV/host/ppu/bin
+export PATH=$PATH:$PS3DEV/host/spu/bin
+

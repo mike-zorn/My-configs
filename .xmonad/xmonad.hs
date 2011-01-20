@@ -14,14 +14,14 @@ myManageHooks = composeAll
     , title =? "VLC (XVideo output)" --> doFullFloat
     ]
 
-myClock = "~/.xmonad/clock | dzen2 -x 660 -w 365"
+--myClock = "~/.xmonad/clock | dzen2 -x 660 -w 365"
 
 
 main = do
-    clockBar <- spawnPipe myClock
-    xmonad =<< dzen defaultConfig
+ --   clockBar <- spawnPipe myClock
+    xmonad $ defaultConfig
         { manageHook = myManageHooks
-        --, layoutHook = smartBorders $ defaultConfig
-        , modMask = mod4Mask     -- Rebind Mod to the Windows key
+        --, layoutHook = smartBorders (Tall 1 .5 ||| Mirror Tall ||| Full)
+        , modMask = mod4Mask     -- Rebind Mod to the Meta key
         , terminal = "urxvt"
         }
