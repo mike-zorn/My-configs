@@ -8,15 +8,15 @@ set tw=79
 set expandtab
 syntax enable
 set background=dark
-set wildmenu
 set ruler
+set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_ViewRule_pdf='okular'
+let g:Tex_ViewRule_pdf='apvlv'
 let g:Tex_Folding=0
+let g:Tex_MultipleCompileFormats='pdf'
 autocmd FileType tex set spell
 filetype plugin on
 filetype plugin indent on
-autocmd FileType tex map <leader>vw :!okular %:r.pdf &>/dev/null & <CR>
-autocmd FileType c map <leader>cc :make <CR>
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+map <leader>jl 080lBi<CR><Esc>
