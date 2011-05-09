@@ -18,9 +18,11 @@ alias cdrsh='cd ~/Documents/research/Masters'
 alias newterm='urxvt &>/dev/null &'
 alias shutitdown='sudo shutdown -hP now'
 alias mounthabakuk='sshfs habakuk.gmu.edu:/Users/matkins ~/habakuk'
-alias umounthabakuk='sudo umount -l ~/habakuk'
+alias umounthabakuk='fusermount -uz ~/habakuk'
 alias sshabakuk='ssh habakuk.gmu.edu'
 alias minecraft='java -Xmx1024M -Xms512M -cp minecraft.jar net.minecraft.LauncherFrame'
+alias mountapenixmusic='sshfs -p 1337 Mike@apenix.homeunix.com:/mnt/bigdisc/Music ~/Music'
+alias umountapenixmusic='fusermount -uz ~/Music'
 
 # Setup Prompt
 
