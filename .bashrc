@@ -10,7 +10,7 @@ fi
 # User specific aliases and functions
 
 alias vi=vim
-alias ls='ls --color=auto'
+alias ls='ls -G'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
