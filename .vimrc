@@ -21,4 +21,5 @@ filetype plugin on
 syntax on
 filetype plugin indent on
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 
 map <leader>jl 080lBi<CR><Esc>
