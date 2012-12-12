@@ -54,4 +54,5 @@ export PATH=$PATH:$PSL1GHT/host/bin
 export PATH=$PATH:$PS3DEV/host/ppu/bin
 export PATH=$PATH:$PS3DEV/host/spu/bin
 export PATH=~/preprocessor:$PATH
+export PATH=$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources
 
