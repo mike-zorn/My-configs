@@ -1,3 +1,4 @@
+call pathogen#infect()
 set nocompatible
 set autoindent
 set smartindent
@@ -17,6 +18,7 @@ let g:Tex_Folding=0
 let g:Tex_MultipleCompileFormats='pdf'
 autocmd FileType tex set spell
 filetype plugin on
+syntax on
 filetype plugin indent on
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 map <leader>jl 080lBi<CR><Esc>
