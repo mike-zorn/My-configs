@@ -16,3 +16,6 @@
 [submodule ".janus/tasklist"]
 	path = .janus/tasklist
 	url = git://github.com/vim-scripts/TaskList.vim.git
+[submodule ".janus/powerline"]
+	path = .janus/powerline
+	url = git://github.com/Lokaltog/vim-powerline.git
