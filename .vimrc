@@ -5,8 +5,12 @@ set smartindent
 set ts=4
 set softtabstop=4
 set shiftwidth=4
-set tw=79
 set expandtab
+
+"" see :h fo-table
+set tw=79
+set formatoptions=tcroqn1
+
 syntax enable
 set background=dark
 set ruler
