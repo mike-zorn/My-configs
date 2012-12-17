@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/tasklist"]
 	path = .vim/bundle/tasklist
 	url = git://github.com/vim-scripts/TaskList.vim.git
+[submodule ".janus/tasklist"]
+	path = .janus/tasklist
+	url = git://github.com/vim-scripts/TaskList.vim.git

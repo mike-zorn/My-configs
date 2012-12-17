@@ -1,4 +1,3 @@
-call pathogen#infect()
 set nocompatible
 set autoindent
 set smartindent
@@ -6,11 +5,23 @@ set ts=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+set nonumber
 
 "" see :h fo-table
 set tw=79
 set formatoptions=tcroqn1
-
+"Enable spell checking
+set spelllang=en_us
+set spellfile=~/.janus/en.utf-8.add
+highlight clear SpellBad
+highlight clear SpellRare
+highlight clear SpellLocal
+highlight clear SpellCap
+highlight SpellBad   gui=undercurl cterm=underline ctermfg=red    guisp=red
+highlight SpellRare  gui=undercurl cterm=underline ctermfg=red    guisp=orange
+highlight SpellLocal gui=undercurl cterm=underline ctermfg=blue   guisp=blue
+highlight SpellCap   gui=undercurl cterm=underline ctermfg=yellow guisp=Yellow
+ 
 syntax enable
 set background=dark
 set ruler
@@ -26,4 +37,6 @@ syntax on
 filetype plugin indent on
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript setlocal ts=2 softtabstop=2 shiftwidth=2
-map <leader>jl 080lBi<CR><Esc>
+"" Set spell for git commits
+au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
+map <leader>tl <Plug>TaskList
