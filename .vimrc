@@ -40,3 +40,8 @@ autocmd FileType javascript setlocal ts=2 softtabstop=2 shiftwidth=2
 "" Set spell for git commits
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
 map <leader>tl <Plug>TaskList
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
