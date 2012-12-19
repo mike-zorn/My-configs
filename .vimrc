@@ -39,9 +39,17 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript setlocal ts=2 softtabstop=2 shiftwidth=2
 "" Set spell for git commits
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
+
+"" give TaskList a mapping which doesn't collide
 map <leader>tl <Plug>TaskList
-if exists('+colorcolumn')
-  set colorcolumn=80
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
+
+" Detect over-80col
+highlight OverLength ctermbg=red ctermfg=white guibg=red
+match OverLength /\%81v.\+/
+
+" Show 80 col
+set colorcolumn=80
+highlight ColorColumn ctermbg=black guibg=black
+
+"" clear the ctrl p cache
+map <leader>cp :ClearCtrlPCache<CR>
