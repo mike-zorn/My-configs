@@ -39,6 +39,7 @@ filetype plugin on
 syntax on
 filetype plugin indent on
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+"" Set javascript indetation
 autocmd FileType javascript setlocal ts=2 softtabstop=2 shiftwidth=2
 "" Set spell for git commits
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
