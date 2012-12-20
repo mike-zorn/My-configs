@@ -26,12 +26,15 @@ syntax enable
 set background=dark
 set ruler
 set grepprg=grep\ -nH\ $*
+
+"" vim-latex settings
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='apvlv'
 let g:Tex_Folding=0
 let g:Tex_MultipleCompileFormats='pdf'
 autocmd FileType tex set spell
+
 filetype plugin on
 syntax on
 filetype plugin indent on
