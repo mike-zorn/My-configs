@@ -57,3 +57,5 @@ export PATH=$PATH:$PS3DEV/host/spu/bin
 export PATH=~/preprocessor:$PATH
 export PATH=$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
