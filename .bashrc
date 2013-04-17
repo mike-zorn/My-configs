@@ -6,7 +6,9 @@ set -o vi
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
-
+source /usr/share/git-core/git-completion.bash
+source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+ 
 # User specific aliases and functions
 
 alias vi=vim
@@ -31,7 +33,7 @@ CYAN="\[\033[0;36m\]"
 NONE="\[\033[0m\]"
 PURPLE="\[\033[0;35m\]"
 GREEN="\[\033[0;32m\]"
-PS1="${PURPLE}\h ${GREEN}[\T] ${CYAN}\W ${BLUE}\$ ${NONE}" 
+PS1="${PURPLE}\h${GREEN}\$(__git_ps1) ${CYAN}\W ${BLUE}\$ ${NONE}" 
 
 # Environment Variables
 
@@ -45,6 +47,7 @@ export EDITOR=vim
 export PATH=~/aise:/usr/local/bin:$PATH
 export PATH=/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$PATH
 export PATH=/opt/visit/bin:$PATH
+export PATH=/usr/local/share/npm/bin:$PATH
 export AUTO_DIR=/usr/local/auto
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
