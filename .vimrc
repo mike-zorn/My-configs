@@ -1,9 +1,10 @@
+call pathogen#infect()
 set nocompatible
 set autoindent
 set smartindent
-set ts=4
-set softtabstop=4
-set shiftwidth=4
+set ts=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set nonumber
 
@@ -12,7 +13,7 @@ set tw=79
 set formatoptions=tcroqn1
 "Enable spell checking
 set spelllang=en_us
-set spellfile=~/.janus/en.utf-8.add
+set spellfile=~/.vim/en.utf-8.add
 highlight clear SpellBad
 highlight clear SpellRare
 highlight clear SpellLocal
@@ -39,8 +40,7 @@ filetype plugin on
 syntax on
 filetype plugin indent on
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-"" Set javascript indetation
-autocmd FileType javascript setlocal ts=2 softtabstop=2 shiftwidth=2
+autocmd FileType python setlocal ts=4 softtabstop=4 shiftwidth=4
 "" Set spell for git commits
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
 

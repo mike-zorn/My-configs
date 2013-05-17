@@ -7,15 +7,6 @@
 [submodule ".vim/bundle/ack"]
 	path = .vim/bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
-[submodule ".vim/bundle/tagbar"]
-	path = .vim/bundle/tagbar
-	url = git://github.com/majutsushi/tagbar.git
-[submodule ".vim/bundle/tasklist"]
-	path = .vim/bundle/tasklist
-	url = git://github.com/vim-scripts/TaskList.vim.git
-[submodule ".janus/tasklist"]
-	path = .janus/tasklist
-	url = git://github.com/vim-scripts/TaskList.vim.git
-[submodule ".janus/powerline"]
-	path = .janus/powerline
+[submodule ".vim/bundle/powerline"]
+	path = .vim/powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
