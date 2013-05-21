@@ -44,9 +44,6 @@ autocmd FileType python setlocal ts=4 softtabstop=4 shiftwidth=4
 "" Set spell for git commits
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
 
-"" give TaskList a mapping which doesn't collide
-map <leader>tl <Plug>TaskList
-
 " Detect over-80col
 highlight OverLength ctermbg=red ctermfg=white guibg=red
 match OverLength /\%81v.\+/
@@ -57,3 +54,6 @@ highlight ColorColumn ctermbg=black guibg=black
 
 "" clear the ctrl p cache
 map <leader>cp :ClearCtrlPCache<CR>
+
+"" Show nerdtree
+map <leader>n :NERDTree<CR>
