@@ -41,6 +41,10 @@ syntax on
 filetype plugin indent on
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python setlocal ts=4 softtabstop=4 shiftwidth=4
+
+"" Show hidden files
+let NERDTreeShowHidden=1
+
 "" Set spell for git commits
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
 
