@@ -1,27 +1,27 @@
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
-[submodule ".vim/bundle/powerline"]
-	path = .vim/bundle/powerline
+[submodule "vim/bundle/powerline"]
+	path = vim/bundle/powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
 	url = git://github.com/ervandew/supertab.git
-[submodule ".vim/bundle/vim-markdown"]
-	path = .vim/bundle/vim-markdown
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
 	url = git://github.com/plasticboy/vim-markdown.git
-[submodule ".vim/bundle/fugitive"]
-	path = .vim/bundle/fugitive
+[submodule "vim/bundle/fugitive"]
+	path = vim/bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/ctrlp"]
-	path = .vim/bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
-[submodule ".vim/bundle/vimerl"]
-	path = .vim/bundle/vimerl
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = git://github.com/kien/ctrlpvim.git
+[submodule "vim/bundle/vimerl"]
+	path = vim/bundle/vimerl
 	url = git://github.com/jimenezrick/vimerl.git
-[submodule ".vim/bundle/vim-scala"]
-	path = .vim/bundle/vim-scala
+[submodule "vim/bundle/vim-scala"]
+	path = vim/bundle/vim-scala
 	url = git://github.com/derekwyatt/vim-scala.git
