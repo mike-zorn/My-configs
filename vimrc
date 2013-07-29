@@ -61,3 +61,6 @@ map <leader>cp :ClearCtrlPCache<CR>
 
 "" Show nerdtree
 map <leader>n :NERDTree<CR>
+
+"" fugitive git grep window
+autocmd QuickFixCmdPost *grep* cwindow
