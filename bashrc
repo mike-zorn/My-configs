@@ -6,9 +6,8 @@ set -o vi
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
-source /usr/share/git-core/git-completion.bash
-source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
- 
+source /usr/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-prompt.sh 
 # User specific aliases and functions
 
 alias vi=vim
@@ -33,7 +32,7 @@ CYAN="\[\033[0;36m\]"
 NONE="\[\033[0m\]"
 PURPLE="\[\033[0;35m\]"
 GREEN="\[\033[0;32m\]"
-PS1="${PURPLE}\h${GREEN}\$(__git_ps1) ${CYAN}\W ${BLUE}\$ ${NONE}" 
+PS1="${PURPLE}$(scutil --get ComputerName)${GREEN}\$(__git_ps1) ${CYAN}\W ${BLUE}\$ ${NONE}" 
 
 # Environment Variables
 
@@ -59,6 +58,7 @@ export PATH=$PATH:$PS3DEV/host/ppu/bin
 export PATH=$PATH:$PS3DEV/host/spu/bin
 export PATH=~/preprocessor:$PATH
 export PATH=$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources
+export PATH=$PATH:/usr/local/Cellar/ruby/2.0.0-p247/bin
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
