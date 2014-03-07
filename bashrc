@@ -59,6 +59,8 @@ export PATH=$PATH:$PS3DEV/host/spu/bin
 export PATH=~/preprocessor:$PATH
 export PATH=$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources
 export PATH=$PATH:/usr/local/Cellar/ruby/2.0.0-p247/bin
+export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
+export PATH="./node_modules/.bin:$PATH"
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
