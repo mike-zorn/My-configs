@@ -13,3 +13,4 @@ PATH=$PATH:$HOME/bin
 
 export PATH
 [[ -s /Users/MichaelAtkins/.nvm/nvm.sh ]] && . /Users/MichaelAtkins/.nvm/nvm.sh # This loads NVM
+source /Users/matkins/.rvm/scripts/rvm
