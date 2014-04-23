@@ -1,1 +1,3 @@
 Just some config files I use.
+
+``brew install reattach-to-user-namespace`` first
