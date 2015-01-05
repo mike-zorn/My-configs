@@ -1,3 +1,7 @@
 Just some config files I use.
 
-``brew install reattach-to-user-namespace`` first
+```bash
+git clone --recursive <this-repo>
+brew install reattach-to-user-namespace
+./install.py
+```
