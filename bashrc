@@ -61,6 +61,7 @@ export PATH=$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/C
 export PATH=$PATH:/usr/local/Cellar/ruby/2.0.0-p247/bin
 export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
-
+export GOPATH="$HOME/gocode"
+export PATH="$GOPATH/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
