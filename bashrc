@@ -25,6 +25,11 @@ alias minecraft='java -Xmx1024M -Xms512M -cp minecraft.jar net.minecraft.Launche
 alias mountapenixmusic='sshfs -p 1337 Mike@apenix.homeunix.com:/mnt/bigdisc/Music ~/Music'
 alias umountapenixmusic='fusermount -uz ~/Music'
 
+# Lanetix aliases
+alias lxstart="cd ui && nvm exec npm start & cd auth && nvm exec npm start & cd search && nvm exec npm start & cd api && nvm exec npm start &"
+alias lxrunning="lsof -i :5000-5100"
+alias lxpsql='vagrant ssh --command "sudo -u postgres psql -d lanetix"'
+
 # Setup Prompt
 
 BLUE="\[\033[0;34m\]"
@@ -63,5 +68,6 @@ export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 export GOPATH="$HOME/gocode"
 export PATH="$GOPATH/bin:$PATH"
+export RUN_ON_HOST=*
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
