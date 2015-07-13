@@ -66,7 +66,7 @@ map <leader>n :NERDTree<CR>
 autocmd QuickFixCmdPost *grep* cwindow
 
 "" use eslint
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['standard', 'eslint', 'jshint']
 
 "" don't ctrlp node modules
 set wildignore+=*/node_modules/*
