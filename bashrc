@@ -63,5 +63,9 @@ export PATH="./node_modules/.bin:$PATH"
 export GOPATH="$HOME/gocode"
 export PATH="$GOPATH/bin:$PATH"
 export RUN_ON_HOST=*
+export NODE_REPL_HISTORY_FILE="$HOME/.node-repl-hist"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# Lanetix environment variables
+if [ -e "$HOME/lanetix.env" ]; then source "$HOME/lanetix.env"; fi
