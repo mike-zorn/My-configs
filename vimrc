@@ -65,8 +65,14 @@ map <leader>n :NERDTree<CR>
 "" fugitive git grep window
 autocmd QuickFixCmdPost *grep* cwindow
 
-"" use eslint
-let g:syntastic_javascript_checkers = ['standard', 'eslint', 'jshint']
+"" use standard to lint js
+let g:syntastic_javascript_checkers = ['standard']
 
 "" don't ctrlp node modules
 set wildignore+=*/node_modules/*
+
+"" move windows within terminal emulator
+:tnoremap <C-w>h <C-\><C-n><C-w>h
+:tnoremap <C-w>j <C-\><C-n><C-w>j
+:tnoremap <C-w>k <C-\><C-n><C-w>k
+:tnoremap <C-w>l <C-\><C-n><C-w>l

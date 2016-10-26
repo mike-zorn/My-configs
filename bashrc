@@ -10,7 +10,8 @@ source /usr/local/etc/bash_completion.d/git-completion.bash
 source /usr/local/etc/bash_completion.d/git-prompt.sh 
 # User specific aliases and functions
 
-alias vi=vim
+alias vim=nvim
+alias vi=nvim
 alias ls='ls -G'
 alias ll='ls -lh'
 alias la='ls -A'
@@ -18,11 +19,6 @@ alias l='ls -CF'
 alias newterm='urxvt &>/dev/null &'
 alias shutitdown='sudo shutdown -hP now'
 alias minecraft='java -Xmx1024M -Xms512M -cp minecraft.jar net.minecraft.LauncherFrame'
-
-# Lanetix aliases
-alias lxstart="cd ui && nvm exec npm start & cd auth && nvm exec npm start & cd search && nvm exec npm start & cd api && nvm exec npm start &"
-alias lxrunning="lsof -i :5000-5100"
-alias lxpsql='vagrant ssh --command "sudo -u postgres psql -d lanetix"'
 
 # Setup Prompt
 
@@ -40,8 +36,8 @@ export PYTHONPATH=/usr/local/lib/paraview-3.8/site-packages/:$PYTHONPATH
 export PYTHONPATH=/opt/visit/current/linux-x86_64/lib:$PYTHONPATH
 export PYTHONPATH=~/preprocessor:$PYTHONPATH
 export FIPY_VIEWER='matplotlib'
-export SVN_EDITOR=vim
-export EDITOR=vim
+export SVN_EDITOR=nvim
+export EDITOR=nvim
 export PATH=~/aise:/usr/local/bin:$PATH
 export PATH=/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$PATH
 export PATH=/opt/visit/bin:$PATH
@@ -65,7 +61,6 @@ export PATH="$GOPATH/bin:$PATH"
 export RUN_ON_HOST=*
 export NODE_REPL_HISTORY_FILE="$HOME/.node-repl-hist"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 # Lanetix environment variables
-if [ -e "$HOME/lanetix.env" ]; then source "$HOME/lanetix.env"; fi
+source $HOME/env/.lxprofile
+

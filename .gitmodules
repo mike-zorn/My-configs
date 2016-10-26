@@ -34,3 +34,9 @@
 [submodule "vim/bundle/yajs"]
 	path = vim/bundle/yajs
 	url = git@github.com:othree/yajs.vim.git
+[submodule "vim/bundle/taboo"]
+	path = vim/bundle/taboo
+	url = git@github.com:gcmt/taboo.vim.git
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = git@github.com:pangloss/vim-javascript.git
