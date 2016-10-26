@@ -31,9 +31,6 @@
 [submodule "vim/bundle/vim-jsx"]
 	path = vim/bundle/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
-[submodule "vim/bundle/yajs"]
-	path = vim/bundle/yajs
-	url = git@github.com:othree/yajs.vim.git
 [submodule "vim/bundle/taboo"]
 	path = vim/bundle/taboo
 	url = git@github.com:gcmt/taboo.vim.git
