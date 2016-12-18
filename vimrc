@@ -42,6 +42,8 @@ filetype plugin indent on
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python setlocal ts=4 softtabstop=4 shiftwidth=4
 
+autocmd FileType markdown setlocal tw=0
+
 "" Show hidden files
 let NERDTreeShowHidden=1
 
@@ -51,10 +53,6 @@ au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
 " Detect over-80col
 highlight OverLength ctermbg=red ctermfg=white guibg=red
 match OverLength /\%81v.\+/
-
-" Show 80 col
-set colorcolumn=80
-highlight ColorColumn ctermbg=black guibg=black
 
 "" clear the ctrl p cache
 map <leader>cp :ClearCtrlPCache<CR>
@@ -76,3 +74,6 @@ set wildignore+=*/node_modules/*
 :tnoremap <C-w>j <C-\><C-n><C-w>j
 :tnoremap <C-w>k <C-\><C-n><C-w>k
 :tnoremap <C-w>l <C-\><C-n><C-w>l
+
+"" more scrollback in term emu
+let g:terminal_scrollback_buffer_size = 100000
