@@ -50,10 +50,6 @@ let NERDTreeShowHidden=1
 "" Set spell for git commits
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
 
-" Detect over-80col
-highlight OverLength ctermbg=red ctermfg=white guibg=red
-match OverLength /\%81v.\+/
-
 "" clear the ctrl p cache
 map <leader>cp :ClearCtrlPCache<CR>
 

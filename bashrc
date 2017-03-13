@@ -64,3 +64,5 @@ export NODE_REPL_HISTORY_FILE="$HOME/.node-repl-hist"
 # Lanetix environment variables
 source $HOME/env/.lxprofile
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
