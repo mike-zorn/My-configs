@@ -1,4 +1,33 @@
-call pathogen#infect()
+" Specify a directory for plugins
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'vim-airline/vim-airline'
+Plug 'gcmt/taboo.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ervandew/supertab'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'w0rp/ale'
+Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/echodoc.vim'
+
+call plug#end()
+
+let g:deoplete#enable_at_startup = 1
+let g:LanguageClient_serverCommands = {
+\ 'javascript': ['flow-language-server', '--stdio'],
+\ }
+
+" (Optionally) automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+
+set noshowmode
 set nocompatible
 set autoindent
 set smartindent
@@ -28,20 +57,9 @@ set background=dark
 set ruler
 set grepprg=grep\ -nH\ $*
 
-"" vim-latex settings
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_ViewRule_pdf='apvlv'
-let g:Tex_Folding=0
-let g:Tex_MultipleCompileFormats='pdf'
-autocmd FileType tex set spell
-
 filetype plugin on
 syntax on
 filetype plugin indent on
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType python setlocal ts=4 softtabstop=4 shiftwidth=4
-
 autocmd FileType markdown setlocal tw=0
 
 "" Show hidden files
@@ -59,9 +77,6 @@ map <leader>n :NERDTree<CR>
 "" fugitive git grep window
 autocmd QuickFixCmdPost *grep* cwindow
 
-"" use standard to lint js
-let g:syntastic_javascript_checkers = ['standard']
-
 "" don't ctrlp node modules
 set wildignore+=*/node_modules/*
 
@@ -73,3 +88,13 @@ set wildignore+=*/node_modules/*
 
 "" more scrollback in term emu
 let g:terminal_scrollback_buffer_size = 100000
+
+"" js linters
+let g:ale_linters = {
+\   'javascript': ['standard', 'flow'],
+\}
+let g:ale_sign_column_always = 0
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)

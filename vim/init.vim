@@ -1,1 +1,1 @@
-/Users/apechimp/.vimrc
+/Users/mike/.vimrc
