@@ -1,14 +1,10 @@
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+   . ~/.bashrc
 fi
 
-# User specific environment and startup programs
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mikeatkins/Downloads/google-cloud-sdk/path.bash.inc' ]; then source '/Users/mikeatkins/Downloads/google-cloud-sdk/path.bash.inc'; fi
 
-PATH=$PATH:$HOME/bin
-
-export PATH
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mikeatkins/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/mikeatkins/Downloads/google-cloud-sdk/completion.bash.inc'; fi

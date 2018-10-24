@@ -1,2 +1,5 @@
 .netrwhist
 *.spl
+config/yarn
+config/gcloud
+.DS_Store

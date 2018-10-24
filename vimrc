@@ -6,16 +6,20 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'gcmt/taboo.vim'
-Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'zchee/deoplete-go'
+Plug 'fatih/vim-go'
+Plug 'godoctor/godoctor.vim'
 
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length = 1
 let g:LanguageClient_serverCommands = {
 \ 'javascript': ['flow-language-server', '--stdio'],
 \ }
@@ -25,6 +29,12 @@ let g:LanguageClient_autoStart = 1
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+let g:go_fmt_command = "goimports"
+let g:go_fmt_options = { 'goimports': '-local github.com/launchdarkly,gopkg.in/launchdarkly' }
+let g:go_term_enabled = 1
+let g:go_autodetect_gopath = 0
+let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+
 
 set noshowmode
 set nocompatible
@@ -50,7 +60,7 @@ highlight SpellBad   gui=undercurl cterm=underline ctermfg=red    guisp=red
 highlight SpellRare  gui=undercurl cterm=underline ctermfg=red    guisp=orange
 highlight SpellLocal gui=undercurl cterm=underline ctermfg=blue   guisp=blue
 highlight SpellCap   gui=undercurl cterm=underline ctermfg=yellow guisp=Yellow
- 
+
 syntax enable
 set background=dark
 set ruler
@@ -91,7 +101,10 @@ let g:terminal_scrollback_buffer_size = 100000
 "" js linters
 let g:ale_linters = {
 \   'javascript': ['standard', 'flow'],
+\   'go': ['golangci-lint'],
 \}
+let g:ale_go_golangci_lint_package = 1
+let g:ale_go_golangci_lint_options = ''
 let g:ale_sign_column_always = 0
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
