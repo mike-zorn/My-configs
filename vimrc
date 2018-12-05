@@ -14,7 +14,11 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'zchee/deoplete-go'
 Plug 'fatih/vim-go'
-Plug 'godoctor/godoctor.vim'
+Plug 'machakann/vim-highlightedyank'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'fszymanski/deoplete-emoji'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
@@ -24,11 +28,11 @@ let g:LanguageClient_serverCommands = {
 \ 'javascript': ['flow-language-server', '--stdio'],
 \ }
 
-" (Optionally) automatically start language servers.
-let g:LanguageClient_autoStart = 1
+" automatically start language servers.
+" let g:LanguageClient_autoStart = 1
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 let g:go_fmt_command = "goimports"
 let g:go_fmt_options = { 'goimports': '-local github.com/launchdarkly,gopkg.in/launchdarkly' }
 let g:go_term_enabled = 1
@@ -45,6 +49,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set nonumber
+set inccommand=split
 
 "" see :h fo-table
 set tw=79
@@ -65,6 +70,7 @@ syntax enable
 set background=dark
 set ruler
 set grepprg=grep\ -nH\ $*
+colorscheme dracula
 
 filetype plugin on
 syntax on
