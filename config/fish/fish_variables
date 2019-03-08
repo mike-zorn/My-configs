@@ -9,6 +9,7 @@ SETUVAR --export HOMEBREW_CASK_OPTS:\x2d\x2drequire\x2dsha
 SETUVAR --export HOMEBREW_NO_ANALYTICS:1
 SETUVAR --export HOMEBREW_NO_INSECURE_REDIRECT:1
 SETUVAR --export --path LD_GOPATH:/Users/mikeatkins/go/src/github\x2ecom/launchdarkly/
+SETUVAR --export PRE_COMMIT_ALLOW_NO_CONFIG:1
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
