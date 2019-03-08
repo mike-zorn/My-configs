@@ -19,6 +19,8 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'fszymanski/deoplete-emoji'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'vim-scripts/dbext.vim'
+Plug 'dag/vim-fish'
 
 call plug#end()
 
@@ -37,6 +39,17 @@ let g:go_fmt_command = "goimports"
 let g:go_fmt_options = { 'goimports': '-local github.com/launchdarkly,gopkg.in/launchdarkly' }
 let g:go_term_enabled = 1
 let g:go_autodetect_gopath = 0
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_sameids = 1
+let g:go_addtags_transform = "camelcase"
+
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
 
@@ -106,12 +119,17 @@ let g:terminal_scrollback_buffer_size = 100000
 
 "" js linters
 let g:ale_linters = {
-\   'javascript': ['standard', 'flow'],
+\   'javascript': ['eslint'],
 \   'go': ['golangci-lint'],
+\}
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
 \}
 let g:ale_go_golangci_lint_package = 1
 let g:ale_go_golangci_lint_options = ''
 let g:ale_sign_column_always = 0
+let g:ale_fix_on_save = 1
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)

@@ -51,7 +51,7 @@ export PATH=$PATH:$PS3DEV/host/spu/bin
 export PATH=~/preprocessor:$PATH
 export PATH=$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources
 export PATH=$PATH:/usr/local/Cellar/ruby/2.0.0-p247/bin
-export PATH="./node_modules/.bin:$PATH"
+export PATH="./bin:./node_modules/.bin:$PATH"
 export RUN_ON_HOST=*
 export NODE_REPL_HISTORY_FILE="$HOME/.node-repl-hist"
 
@@ -87,3 +87,5 @@ source ~/.private_bashrc
 
 alias mastodon='mastodon -k sdk-80e27131-2e76-4630-bd07-3490ee055398 -a api-7e3b2b57-87ba-4d34-a627-621349522366'
 alias nf='xargs -J % notify -title done -text %'
+
+ulimit -n 5000
