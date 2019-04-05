@@ -1,7 +1,7 @@
 function nb -a args -d "Record a note"
-  set nb_path ~/Documents/nbs
+  set nb_path $NB_PATH
   set today (date "+%m-%d-%y")
-  set today_file $nb_path/$today
+  set today_file "$nb_path/$today".txt
 
   switch "$args"
     case ""
@@ -20,7 +20,7 @@ end
 function _nb -a nb_path -a today_file
   mkdir -p $nb_path
   date "+%T" >> $today_file
-  cat - >> $today_file
+  cat - | grep -v '^#' >> $today_file
   echo '' >> $today_file
 end
 
