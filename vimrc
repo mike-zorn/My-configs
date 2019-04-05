@@ -49,6 +49,7 @@ let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
 let g:go_addtags_transform = "camelcase"
+let g:deoplete#sources#go#gocode_binary = "$GOPATH/bin/gocode"
 
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
@@ -95,6 +96,8 @@ let NERDTreeShowHidden=1
 
 "" Set spell for git commits
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
+autocmd FileType gitcommit set bufhidden=delete
+autocmd FileType gitrebase set bufhidden=delete
 
 "" clear the ctrl p cache
 map <leader>cp :ClearCtrlPCache<CR>
@@ -136,3 +139,6 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 set mouse=a
+if has('nvim')
+  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+endif
