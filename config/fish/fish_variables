@@ -1,7 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export ANSIBLE_INVENTORY:ec2\x2epy
-SETUVAR --export CMS_MFA_ARN:arn\x3aaws\x3aiam\x3a\x3a596489105035\x3amfa/AHRK
 SETUVAR --export --path EC2_INI_PATH:ec2\x2eini
 SETUVAR --export EDITOR:nvim
 SETUVAR --export --path GOPATH:/Users/mikeatkins/go
