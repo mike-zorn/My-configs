@@ -96,6 +96,8 @@ let NERDTreeShowHidden=1
 
 "" Set spell for git commits
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
+au BufNewFile,BufRead PULLREQ_EDITMSG setlocal spell
+au BufNewFile,BufRead PULLREQ_EDITMSG set bufhidden=delete
 autocmd FileType gitcommit set bufhidden=delete
 autocmd FileType gitrebase set bufhidden=delete
 
