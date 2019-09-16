@@ -5,7 +5,9 @@ function nb -a args -d "Record a note"
 
   switch "$args"
     case ""
-      echo | vipe | _nb $nb_path $today_file
+      set tmpfile (mktemp)
+      nvr -o $tmpfile
+      cat $tmpfile | _nb $nb_path $today_file
     case "-"
       cat - | _nb $nb_path $today_file
     case "--help"
