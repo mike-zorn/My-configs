@@ -47,6 +47,8 @@ window:
   #     - transparent: Title bar, transparent background, but no title bar buttons
   decorations: full
 
+  startup_mode: Fullscreen
+
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -81,21 +83,21 @@ tabspaces: 8
 font:
   # Normal (roman) font face
   normal:
-    family: Monaco
+    family: Source Code Variable
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Light
 
   # Bold font face
   bold:
-    family: Monaco
+    family: Source Code Variable
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: Bold
 
   # Italic font face
   italic:
-    family: Monaco
+    family: Source Code Variable
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Light Italic
 
   # Point size
   size: 18.0
@@ -120,7 +122,8 @@ font:
   use_thin_strokes: true
 
 # Display the time it takes to redraw each frame.
-render_timer: false
+  debug:
+    render_timer: false
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
