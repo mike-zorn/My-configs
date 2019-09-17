@@ -6,7 +6,7 @@ function nb -a args -d "Record a note"
   switch "$args"
     case ""
       set tmpfile (mktemp)
-      nvr -o $tmpfile
+      nvr --remote-wait -c 'set bufhidden=delete' -cc ':sp' $tmpfile
       cat $tmpfile | _nb $nb_path $today_file
     case "-"
       cat - | _nb $nb_path $today_file
