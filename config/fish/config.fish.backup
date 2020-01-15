@@ -1,0 +1,7 @@
+eval (python -m virtualfish compat_aliases)
+gvm 1.13 | source
+
+alias vi nvim
+alias vim nvim
+
+ulimit -n 5000

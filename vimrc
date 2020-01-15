@@ -7,36 +7,24 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'gcmt/taboo.vim'
 Plug 'ervandew/supertab'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'zchee/deoplete-go'
 Plug 'fatih/vim-go'
 Plug 'machakann/vim-highlightedyank'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'fszymanski/deoplete-emoji'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-scripts/dbext.vim'
 Plug 'dag/vim-fish'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length = 1
-let g:LanguageClient_serverCommands = {
-\ 'javascript': ['flow-language-server', '--stdio'],
-\ }
-
-" automatically start language servers.
-" let g:LanguageClient_autoStart = 1
-
-" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 let g:go_fmt_command = "goimports"
 let g:go_fmt_options = { 'goimports': '-local github.com/launchdarkly,gopkg.in/launchdarkly' }
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 let g:go_term_enabled = 1
 let g:go_autodetect_gopath = 0
 let g:go_highlight_build_constraints = 1
@@ -49,10 +37,10 @@ let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
 let g:go_addtags_transform = "camelcase"
-let g:deoplete#sources#go#gocode_binary = "$GOPATH/bin/gocode"
 
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
+let g:terraform_fmt_on_save=1
 
 set noshowmode
 set nocompatible
