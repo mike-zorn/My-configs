@@ -1,5 +1,7 @@
 eval (python -m virtualfish compat_aliases)
-gvm 1.12.9 | source
+if type gvm 2> /dev/null
+	gvm 1.14.3 | source
+end
 
 alias vi nvim
 alias vim nvim
