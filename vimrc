@@ -10,14 +10,11 @@ Plug 'ervandew/supertab'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'zchee/deoplete-go'
 Plug 'fatih/vim-go'
 Plug 'machakann/vim-highlightedyank'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'fszymanski/deoplete-emoji'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-scripts/dbext.vim'
 Plug 'dag/vim-fish'
