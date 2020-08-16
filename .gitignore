@@ -4,3 +4,4 @@ config/yarn
 config/gcloud
 .DS_Store
 vim/init.vim
+config/fish/fish_variables
