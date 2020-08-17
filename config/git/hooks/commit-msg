@@ -1,2 +1,2 @@
 #!/usr/local/bin/fish
-nb - < $argv
+basename (pwd) | cat - $argv | nb -

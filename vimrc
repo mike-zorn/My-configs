@@ -7,33 +7,40 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'gcmt/taboo.vim'
 Plug 'ervandew/supertab'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
-Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go'
 Plug 'machakann/vim-highlightedyank'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-scripts/dbext.vim'
 Plug 'dag/vim-fish'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'hashivim/vim-terraform'
+Plug 'ianks/vim-tsx'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length = 1
-let g:LanguageClient_serverCommands = {
-\ 'javascript': ['flow-language-server', '--stdio'],
-\ }
+" Make CTRL-T work correctly with goto-definition.
+" need a newer neovim version for this to work 0.5+
+" setlocal tagfunc=CocTagFunc
+" for now, just remap the jumplist one to CTRL-T
+nmap <silent> <C-t> <C-o>
 
-" automatically start language servers.
-" let g:LanguageClient_autoStart = 1
 
-" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gty <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
 let g:go_fmt_command = "goimports"
 let g:go_fmt_options = { 'goimports': '-local github.com/launchdarkly,gopkg.in/launchdarkly' }
+let g:go_info_mode='gopls'
+let g:go_doc_popup_window = 1
 let g:go_term_enabled = 1
 let g:go_autodetect_gopath = 0
 let g:go_highlight_build_constraints = 1
@@ -46,10 +53,10 @@ let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
 let g:go_addtags_transform = "camelcase"
-let g:deoplete#sources#go#gocode_binary = "$GOPATH/bin/gocode"
 
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
+let g:terraform_fmt_on_save=1
 
 set noshowmode
 set nocompatible
@@ -126,6 +133,7 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
 \   'css': ['prettier'],
 \}
 let g:ale_go_golangci_lint_package = 1
