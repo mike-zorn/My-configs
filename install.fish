@@ -1,10 +1,10 @@
 #! /usr/bin/fish
 
-set files vim vimrc config/fish config/fisher config/git
+set files vim vimrc config/fish config/git config/alacritty config/configstore config/coc
 
 for file in $files
 	if test -L ~/.$file
-		break
+		continue
 	end
 	ln -s (pwd)/$file ~/.$file
 end
