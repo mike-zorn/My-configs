@@ -3,3 +3,9 @@
 config/yarn
 config/gcloud
 .DS_Store
+config/coc/extensions
+config/mild/config.toml
+config/fisher
+config/nvm
+config/wireshark
+config/gtk-2.0
