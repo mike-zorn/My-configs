@@ -9,3 +9,4 @@ config/fisher
 config/nvm
 config/wireshark
 config/gtk-2.0
+vim/init.vim

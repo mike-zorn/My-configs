@@ -1,7 +1,16 @@
 Just some config files I use.
 
+- neovim
+- fish
+
+## Prerequisites
+
+- `fish`
+- [vim plug](https://github.com/junegunn/vim-plug)
+
+## Install
+
 ```bash
 git clone --recursive <this-repo>
-brew install reattach-to-user-namespace
-./install.py
+./install.fish
 ```
