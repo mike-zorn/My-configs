@@ -4,3 +4,4 @@ if type gvm 2> /dev/null
 end
 
 ulimit -n 5000
+starship init fish | source
