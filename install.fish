@@ -1,6 +1,6 @@
 #! /usr/bin/fish
 
-set files vim vimrc config/fish config/git config/alacritty config/configstore config/coc
+set files vim vimrc config/fish config/git config/alacritty config/configstore config/coc config/i3 config/i3status config/rofi config/dunst
 
 for file in $files
 	if test -L ~/.$file
