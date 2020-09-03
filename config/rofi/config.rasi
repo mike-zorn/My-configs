@@ -1,5 +1,5 @@
 configuration {
-	modi: "combi,window,drun,run,ssh";
+	modi: "combi,window,drun,run,ssh,power:rofi-power-menu";
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
@@ -34,7 +34,7 @@ configuration {
 /*	auto-select: false;*/
 /*	parse-hosts: false;*/
 /*	parse-known-hosts: true;*/
-	combi-modi: "window,drun,run,ssh";
+	combi-modi: "window,drun,run,ssh,power";
 /*	matching: "normal";*/
 /*	tokenize: true;*/
 /*	m: "-5";*/
