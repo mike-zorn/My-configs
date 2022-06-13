@@ -12,10 +12,14 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+if vim.g.neovide then
+  vim.g.neovide_input_use_logo = true
+end
+
 map('n', '<C-p>', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>')
-map('i', '<D-v>', '"+p')
-map('t', '<D-v>', '"+p')
-map('t', '<D-c>', '"+y')
+map('i', '<D-v>', '<Esc>"+pi')
+map('t', '<D-v>', '<c-\\><c-n>"+pi')
+map('v', '<D-c>', '"+y')
 
 -- LSP mappings
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
