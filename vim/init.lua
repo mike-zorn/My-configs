@@ -1,7 +1,7 @@
 require('plugins')
 
 vim.opt_global.completeopt = { "menuone", "noinsert", "noselect" }
-vim.opt_global.shortmess:remove("F"):append("c")
+-- vim.opt_global.shortmess:remove("F"):append("c")
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local function map(mode, lhs, rhs, opts)
@@ -17,31 +17,38 @@ if vim.g.neovide then
 end
 
 map('n', '<C-p>', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>')
+map('t', '<C-p>', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>')
+map('n', '<leader>gg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>')
+map('n', '<leader>gp', '<cmd>lua require(\'telescope.builtin\').builtin()<cr>')
 map('i', '<D-v>', '<Esc>"+pi')
 map('t', '<D-v>', '<c-\\><c-n>"+pi')
 map('v', '<D-c>', '"+y')
+map('n', '<leader>n', '<cmd>lua require(\'nvim-tree.api\').tree.open()<cr>')
+
+map('n', '<C-w>tv', ':vsp term://fish<cr>')
+map('n', '<C-w>ts', ':sp term://fish<cr>')
 
 -- LSP mappings
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
 map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-map("n", "gds", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
-map("n", "gws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
+map("n", "gi", "<cmd>lua require(\'telescope.builtin\').lsp_implementations()<CR>")
+map("n", "gr", "<cmd>lua require(\'telescope.builtin\').lsp_references()<CR>")
+map("n", "gds", "<cmd>lua require(\'telescope.builtin\').lsp_document_symbol()<CR>")
+map("n", "gws", "<cmd>lua require(\'telescope.builtin\').lsp_workspace_symbol()<CR>")
 map("n", "<leader>cl", [[<cmd>lua vim.lsp.codelens.run()<CR>]])
 map("n", "<leader>sh", [[<cmd>lua vim.lsp.buf.signature_help()<CR>]])
 map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-map("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format { async = true }<CR>")
 map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 map("n", "<leader>ws", '<cmd>lua require"metals".hover_worksheet()<CR>')
-map("n", "<leader>aa", [[<cmd>lua vim.diagnostic.setqflist()<CR>]]) -- all workspace diagnostics
+map("n", "<leader>aa", [[<cmd>lua vim.diagnostic.setqflist()<CR>]])                 -- all workspace diagnostics
 map("n", "<leader>ae", [[<cmd>lua vim.diagnostic.setqflist({severity = "E"})<CR>]]) -- all workspace errors
 map("n", "<leader>aw", [[<cmd>lua vim.diagnostic.setqflist({severity = "W"})<CR>]]) -- all workspace warnings
-map("n", "<leader>d", "<cmd>lua vim.diagnostic.setloclist()<CR>") -- buffer diagnostics only
+--map("n", "<leader>d", "<cmd>lua vim.diagnostic.setloclist()<CR>") -- buffer diagnostics only
 map('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
 map('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>')
-map('n', '<C-j>', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-map('n', '<C-k>', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+map('n', '<C-k>', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+map('n', '<C-j>', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 
 -- Example mappings for usage with nvim-dap. If you don't use that, you can
 -- skip these
@@ -55,22 +62,31 @@ map("n", "<leader>dl", [[<cmd>lua require"dap".run_last()<CR>]])
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-require("nvim-lsp-installer").setup {
+require("mason").setup {
   automatic_installation = true
 }
-local servers = { 'terraformls', 'tsserver', 'gopls' }
+local servers = { 'lua_ls', 'terraformls', 'tsserver', 'pylsp' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     capabilities = capabilities,
   }
 end
 
+require('lspconfig').gopls.setup {
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      buildFlags = { "-tags=launchdarkly_easyjson" }
+    }
+  }
+}
+
 ----------------------------------
--- LSP Setup ---------------------
+-- Metals Setup ------------------
 ----------------------------------
 local metals_config = require("metals").bare_config()
 
@@ -118,6 +134,10 @@ metals_config.on_attach = function(client, bufnr)
   require("metals").setup_dap()
 end
 
+require("chatgpt").setup({
+  api_key_cmd = "op read 'op://Private/lam2bymbbb2jitq3axzgmc6ucq/credential' --no-newline"
+})
+
 -- Autocmd that will actually be in charging of starting the whole thing
 local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
@@ -131,6 +151,13 @@ vim.api.nvim_create_autocmd("FileType", {
   group = nvim_metals_group,
 })
 
+-- vim.g.copilot_no_tab_map = true
+-- vim.g.copilot_assume_mapped = true
+-- vim.g.copilot_tab_fallback = ""
+-- vim.g.copilot_filetypes = {
+--   ['dap-repl'] = false
+-- }
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
@@ -142,13 +169,18 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
+    --['<Tab>'] = cmp.mapping(function(fallback)
+    --  if cmp.visible() then
+    --    cmp.select_next_item()
+    --  -- else
+    --  --   local copilot_keys = vim.fn["copilot#Accept"]()
+    --  --   if copilot_keys ~= "" then
+    --  --     vim.api.nvim_feedkeys(copilot_keys, "i", true)
+    --  --   else
+    --  --     fallback()
+    --  --   end
+    --  end
+    --end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -164,8 +196,26 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
+    { name = "copilot", group_index = 2 },
   },
 }
+
+-- empty setup using defaults
+require("nvim-tree").setup()
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
 
 vim.opt.showmode = false
 vim.opt.compatible = false
@@ -184,15 +234,6 @@ vim.opt.formatoptions = "tcroqn1"
 -- Enable spell checking
 vim.opt.spelllang = "en_us"
 vim.opt.spellfile = "~/.vim/en.utf-8.add"
--- TODO
--- highlight clear SpellBad
--- highlight clear SpellRare
--- highlight clear SpellLocal
--- highlight clear SpellCap
--- highlight SpellBad   gui=undercurl cterm=underline ctermfg=red    guisp=red
--- highlight SpellRare  gui=undercurl cterm=underline ctermfg=red    guisp=orange
--- highlight SpellLocal gui=undercurl cterm=underline ctermfg=blue   guisp=blue
--- highlight SpellCap   gui=undercurl cterm=underline ctermfg=yellow guisp=Yellow
 
 -- syntax enable
 vim.opt.background = "dark"
@@ -202,23 +243,17 @@ vim.cmd([[
 colorscheme dracula
 ]])
 
---TODO
---filetype plugin on
---syntax on
---filetype plugin indent on
---autocmd FileType markdown setlocal tw=0
+vim.cmd("filetype plugin indent on")
 
---TODO
---"" Set spell for git commits
---au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
---au BufNewFile,BufRead PULLREQ_EDITMSG setlocal spell
---au BufNewFile,BufRead PULLREQ_EDITMSG set bufhidden=delete
---autocmd FileType gitcommit set bufhidden=delete
---autocmd FileType gitrebase set bufhidden=delete
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "COMMIT_EDITMSG", "*.md" },
+  command = "setlocal spell"
+})
 
---TODO
---"" fugitive git grep window
---autocmd QuickFixCmdPost *grep* cwindow
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "COMMIT_EDITMSG", "*.md", "git-rebase-todo" },
+  command = "set bufhidden=delete"
+})
 
 -- move windows within terminal emulator
 vim.api.nvim_set_keymap(
@@ -251,3 +286,10 @@ vim.api.nvim_set_keymap(
 -- let g:terminal_scrollback_buffer_size = 100000
 
 vim.opt.mouse = "a"
+
+-- terraform
+require 'lspconfig'.terraformls.setup {}
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.tf", "*.tfvars" },
+  callback = function() vim.lsp.buf.format() end,
+})
