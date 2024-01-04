@@ -1,24 +1,25 @@
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'kien/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'vim-airline/vim-airline'
-Plug 'gcmt/taboo.vim'
-Plug 'ervandew/supertab'
-Plug 'w0rp/ale'
-Plug 'airblade/vim-gitgutter'
-Plug 'fatih/vim-go'
-Plug 'machakann/vim-highlightedyank'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'vim-scripts/dbext.vim'
-Plug 'dag/vim-fish'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'hashivim/vim-terraform'
-Plug 'ianks/vim-tsx'
-Plug 'leafgarland/typescript-vim'
+"Plug 'kien/ctrlp.vim'
+"Plug 'tpope/vim-fugitive'
+"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"Plug 'vim-airline/vim-airline'
+"Plug 'gcmt/taboo.vim'
+"Plug 'ervandew/supertab'
+"Plug 'w0rp/ale'
+"Plug 'airblade/vim-gitgutter'
+"Plug 'fatih/vim-go'
+"Plug 'machakann/vim-highlightedyank'
+"Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'vim-scripts/dbext.vim'
+"Plug 'dag/vim-fish'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'hashivim/vim-terraform'
+"Plug 'ianks/vim-tsx'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
@@ -26,37 +27,39 @@ call plug#end()
 " need a newer neovim version for this to work 0.5+
 " setlocal tagfunc=CocTagFunc
 " for now, just remap the jumplist one to CTRL-T
-nmap <silent> <C-t> <C-o>
-
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gty <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+"nmap <silent> <C-t> <C-o>
+"
+"
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gty <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
-let g:go_def_mapping_enabled = 0
-let g:go_fmt_command = "goimports"
-let g:go_fmt_options = { 'goimports': '-local github.com/launchdarkly,gopkg.in/launchdarkly' }
-let g:go_info_mode='gopls'
-let g:go_doc_popup_window = 1
-let g:go_term_enabled = 1
-let g:go_autodetect_gopath = 0
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_auto_sameids = 1
-let g:go_addtags_transform = "camelcase"
+"let g:go_def_mapping_enabled = 0
+"let g:go_fmt_command = "goimports"
+"let g:go_fmt_options = { 'goimports': '-local github.com/launchdarkly,gopkg.in/launchdarkly' }
+"let g:go_info_mode='gopls'
+"let g:go_doc_popup_window = 1
+"let g:go_term_enabled = 1
+"let g:go_autodetect_gopath = 0
+"let g:go_highlight_build_constraints = 1
+"let g:go_highlight_extra_types = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_functions = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_structs = 1
+"let g:go_highlight_types = 1
+"let g:go_auto_sameids = 1
+"let g:go_addtags_transform = "camelcase"
+"
+"let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+"
+"let g:terraform_fmt_on_save=1
 
-let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
-let g:terraform_fmt_on_save=1
 
 set noshowmode
 set nocompatible
@@ -127,23 +130,23 @@ set wildignore+=*/node_modules/*
 let g:terminal_scrollback_buffer_size = 100000
 
 "" js linters
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'go': ['golangci-lint'],
-\}
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'typescript': ['prettier'],
-\   'css': ['prettier'],
-\}
-let g:ale_go_golangci_lint_package = 1
-let g:ale_go_golangci_lint_options = ''
-let g:ale_sign_column_always = 0
-let g:ale_fix_on_save = 1
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+"let g:ale_linters = {
+"\   'javascript': ['eslint'],
+"\   'go': ['golangci-lint'],
+"\}
+"let g:ale_fixers = {
+"\   'javascript': ['prettier'],
+"\   'typescript': ['prettier'],
+"\   'css': ['prettier'],
+"\}
+"let g:ale_go_golangci_lint_package = 1
+"let g:ale_go_golangci_lint_options = ''
+"let g:ale_sign_column_always = 0
+"let g:ale_fix_on_save = 1
+"" Set this. Airline will handle the rest.
+"let g:airline#extensions#ale#enabled = 1
+"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+"nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 set mouse=a
 if has('nvim')

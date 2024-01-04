@@ -1,2 +1,2 @@
-#!/usr/local/bin/fish
+#!/opt/homebrew/bin/fish
 basename (pwd) | cat - $argv | nb -

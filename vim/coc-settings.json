@@ -16,13 +16,13 @@
       "command": "lua-lsp",
       "filetypes": ["lua"]
     }
-//    "terraform": {
-//      "command": "terraform-lsp",
-//      "filetypes": ["terraform"],
-//      "initializationOptions": {}
-//    }
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": ["terraform"],
+      "initializationOptions": {}
+    }
   },
-  "diagnostic.displayByAle": true,
+  //"diagnostic.displayByAle": true,
   "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "typescript"],
   "java.trace.server": "verbose"
 }
