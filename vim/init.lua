@@ -16,8 +16,8 @@ if vim.g.neovide then
   vim.g.neovide_input_use_logo = true
 end
 
-map('n', '<C-p>', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>')
-map('t', '<C-p>', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>')
+map('n', '<C-p>', '<cmd>lua require(\'telescope.builtin\').find_files({ hidden = true })<cr>')
+map('t', '<C-p>', '<cmd>lua require(\'telescope.builtin\').find_files({ hidden = true })<cr>')
 map('n', '<leader>gg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>')
 map('n', '<leader>gp', '<cmd>lua require(\'telescope.builtin\').builtin()<cr>')
 map('i', '<D-v>', '<Esc>"+pi')
@@ -69,7 +69,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 require("mason").setup {
   automatic_installation = true
 }
-local servers = { 'lua_ls', 'terraformls', 'tsserver', 'pylsp' }
+local servers = { 'lua_ls', 'terraformls', 'ts_ls', 'pylsp' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     capabilities = capabilities,
@@ -200,10 +200,6 @@ cmp.setup {
   },
 }
 
--- empty setup using defaults
-require("nvim-tree").setup()
-
--- OR setup with some options
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
@@ -213,7 +209,13 @@ require("nvim-tree").setup({
     group_empty = true,
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
+  },
+  update_focued_file = {
+    enable = true,
+    update_root = {
+      enable = true,
+    },
   },
 })
 
