@@ -1,5 +1,6 @@
 return {
-  "folke/neoconf.nvim"
+  "Mofiqul/dracula.nvim",
+  "folke/neoconf.nvim",
   "folke/which-key.nvim",
   "gcmt/taboo.vim",
   "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
