@@ -1,7 +1,7 @@
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
+vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 vim.opt_global.completeopt = { "menuone", "noinsert", "noselect" }
 -- vim.opt_global.shortmess:remove("F"):append("c")
@@ -89,16 +89,24 @@ map("n", "<leader>dso", [[<cmd>lua require"dap".step_over()<CR>]])
 map("n", "<leader>dsi", [[<cmd>lua require"dap".step_into()<CR>]])
 map("n", "<leader>dl", [[<cmd>lua require"dap".run_last()<CR>]])
 
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 require("mason").setup {
   automatic_installation = true
 }
-local servers = { 'lua_ls', 'terraformls', 'ts_ls', 'pylsp' }
+
+-- init neoconf before lspconfig so that it can override global settings
+require("neoconf").setup({
+  import = {
+    vscode = false
+  }
+})
+
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+local servers = { 'lua_ls', 'terraformls', 'ts_ls', 'pylsp', 'gopls' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     capabilities = capabilities,
@@ -109,7 +117,20 @@ require('lspconfig').gopls.setup {
   capabilities = capabilities,
   settings = {
     gopls = {
-      buildFlags = { "-tags=launchdarkly_easyjson" }
+      workspaceFiles = {
+        "**/BUILD",
+        "**/WORKSPACE",
+        "**/*.{bzl,bazel}",
+      },
+      env = {
+        GOPACKAGESDRIVER = './tools/gopackagesdriver.sh'
+      },
+      directoryFilters = {
+        "-bazel-bin",
+        "-bazel-out",
+        "-bazel-testlogs",
+        "-bazel-mypkg",
+      },
     }
   }
 }
