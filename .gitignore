@@ -3,5 +3,6 @@
 .DS_Store
 config/**
 !config/fish/**
+!config/nvim/**
 config/fish/fish_variables
 vim/init.vim
