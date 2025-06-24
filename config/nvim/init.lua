@@ -44,6 +44,8 @@ end
 
 if vim.g.neovide then
   vim.g.neovide_input_use_logo = true
+  vim.o.guifont = "Berkeley Mono,Symbols Nerd Font Mono:h18"
+  vim.cmd([[ colorscheme dracula ]])
 end
 
 map('n', '<C-p>', '<cmd>lua require(\'telescope.builtin\').find_files({ hidden = true })<cr>')
@@ -224,5 +226,3 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.tf", "*.tfvars" },
   callback = function() vim.lsp.buf.format() end,
 })
-
--- vim.cmd([[ colorscheme dracula ]])
