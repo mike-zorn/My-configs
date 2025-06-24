@@ -106,34 +106,12 @@ require("neoconf").setup({
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = { 'lua_ls', 'terraformls', 'ts_ls', 'pylsp', 'gopls' }
+local servers = { 'lua_ls', 'terraformls', 'ts_ls', 'pylsp', 'gopls', 'buildifier' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     capabilities = capabilities,
   }
 end
-
-require('lspconfig').gopls.setup {
-  capabilities = capabilities,
-  settings = {
-    gopls = {
-      workspaceFiles = {
-        "**/BUILD",
-        "**/WORKSPACE",
-        "**/*.{bzl,bazel}",
-      },
-      env = {
-        GOPACKAGESDRIVER = './tools/gopackagesdriver.sh'
-      },
-      directoryFilters = {
-        "-bazel-bin",
-        "-bazel-out",
-        "-bazel-testlogs",
-        "-bazel-mypkg",
-      },
-    }
-  }
-}
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
