@@ -108,12 +108,19 @@ require("neoconf").setup({
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = { 'lua_ls', 'terraformls', 'ts_ls', 'pylsp', 'gopls', 'buildifier' }
+local servers = { 'lua_ls', 'terraformls', 'ts_ls', 'pylsp', 'gopls', 'bashls', 'starpls' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     capabilities = capabilities,
   }
 end
+
+-- terraform
+require 'lspconfig'.terraformls.setup {}
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.tf", "*.tfvars" },
+  callback = function() vim.lsp.buf.format() end,
+})
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -126,6 +133,18 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      -- else
+      --   local copilot_keys = vim.fn["copilot#Accept"]()
+      --   if copilot_keys ~= "" then
+      --     vim.api.nvim_feedkeys(copilot_keys, "i", true)
+      --   else
+      --     fallback()
+      --   end
+      end
+    end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -208,9 +227,3 @@ vim.api.nvim_set_keymap(
 -- let g:terminal_scrollback_buffer_size = 100000
 
 
--- terraform
-require 'lspconfig'.terraformls.setup {}
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.tf", "*.tfvars" },
-  callback = function() vim.lsp.buf.format() end,
-})
