@@ -108,7 +108,7 @@ require("neoconf").setup({
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = { 'lua_ls', 'terraformls', 'ts_ls', 'pylsp', 'gopls', 'bashls', 'starpls' }
+local servers = { 'lua_ls', 'terraformls', 'ts_ls', 'pylsp', 'gopls', 'bashls', 'starpls', 'rust_analyzer' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     capabilities = capabilities,
@@ -120,6 +120,14 @@ require 'lspconfig'.terraformls.setup {}
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.tf", "*.tfvars" },
   callback = function() vim.lsp.buf.format() end,
+})
+
+-- Set .mdx files to use markdown highlighting
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.mdx",
+  callback = function()
+    vim.bo.filetype = "markdown"
+  end,
 })
 
 -- nvim-cmp setup

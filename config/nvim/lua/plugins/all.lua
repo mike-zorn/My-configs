@@ -16,6 +16,5 @@ return {
   "williamboman/mason-lspconfig.nvim",
   "williamboman/mason.nvim",
 
-  {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"},
   {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
 }
