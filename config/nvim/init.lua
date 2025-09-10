@@ -115,13 +115,6 @@ for _, lsp in pairs(servers) do
   }
 end
 
--- terraform
-require 'lspconfig'.terraformls.setup {}
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.tf", "*.tfvars" },
-  callback = function() vim.lsp.buf.format() end,
-})
-
 -- Set .mdx files to use markdown highlighting
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.mdx",
@@ -144,13 +137,13 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      -- else
-      --   local copilot_keys = vim.fn["copilot#Accept"]()
-      --   if copilot_keys ~= "" then
-      --     vim.api.nvim_feedkeys(copilot_keys, "i", true)
-      --   else
-      --     fallback()
-      --   end
+        -- else
+        --   local copilot_keys = vim.fn["copilot#Accept"]()
+        --   if copilot_keys ~= "" then
+        --     vim.api.nvim_feedkeys(copilot_keys, "i", true)
+        --   else
+        --     fallback()
+        --   end
       end
     end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
@@ -233,5 +226,3 @@ vim.api.nvim_set_keymap(
 -- TODO
 -- "" more scrollback in term emu
 -- let g:terminal_scrollback_buffer_size = 100000
-
-
